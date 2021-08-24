@@ -14,9 +14,21 @@ h1{
   margin: auto;
 }
 
+
 .content > * {
   width: 100%;
   margin: 10px;
+}
+
+@media (max-width:600px) {
+  .content {
+    width: 95vw;
+    margin: auto;
+  }
+
+  .content > * {
+    margin: 0;
+  }
 }
 
 
@@ -35,15 +47,40 @@ h1{
   background-color: #fff;
 }
 
+@media (max-width:600px) {
+  .pixelsgrid {
+    
+    height: 95vw;
+    
+  }
+}
+
 .cell {
   border: 0.1px solid #000;
   height: 100%;
   cursor: pointer;
+  transition: transform .1s ease;
+}
+
+.cell:hover{
+  transform: scale(1.1);
 }
 
 .controls{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width:600px) {
+  .controls{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .controls > *{
+    margin: 5px;
+  }
 }
 
 .btn{
@@ -79,3 +116,35 @@ h1{
   width: 20px;
   fill: #fff;
 }
+
+.custom,
+.custom input{
+  font-size: 16px;
+  text-align: center;
+  padding: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.custom label > *{
+  display: block;
+}
+
+.btn--set{
+  margin: 5px 0;
+  padding: 5px;
+  width: 100%;
+}
+
+.errorBorder{
+  border: 2px solid red;
+}
+
+input{
+  outline: none;
+}
+
+.currentColor{
+  height: 50px;
+  width: 50px;
+}
+

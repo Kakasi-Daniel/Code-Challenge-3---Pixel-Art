@@ -6,5 +6,5 @@
 
 body{
   background: linear-gradient(189deg, rgba(141,166,143,0.1), rgba(71,142,193,0.8));
-  height: 100vh;
+  min-height: 100vh;
 }
