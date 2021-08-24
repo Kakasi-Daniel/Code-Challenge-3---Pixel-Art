@@ -2,6 +2,7 @@ import './App.css';
 import { useRef, useState, useEffect } from 'react';
 import html2canvas from 'html2canvas';
 
+
 const colors = [
   'red',
   'purple',
@@ -92,6 +93,7 @@ function App() {
   return (
     <div className="App">
       <div className="content">
+        <h1>Pixel Art</h1>
         <div className="controls">
           <button className="btn" onClick={setGridLayout.bind(null, 8)}>
             8x8
@@ -114,7 +116,7 @@ function App() {
             </div>
           ))}
         </div>
-        <button onClick={downloadArtHandler} className="btn">
+        <button onClick={downloadArtHandler} className="btn btn--download">
           Download you art
         </button>
       </div>
