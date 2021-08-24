@@ -2,19 +2,7 @@ import './App.css';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import html2canvas from 'html2canvas';
 
-const colors = [
-  'red',
-  'purple',
-  'greenyellow',
-  'blue',
-  'yellow',
-  'orange',
-  'white',
-  'black',
-  'beige',
-  'salmon',
-  'brown',
-];
+const colors = ['red','purple','greenyellow','blue','yellow','orange','white','black','beige','salmon','brown'];
 
 function App() {
   const [gridLayout, setGridLayout] = useState(8);
@@ -33,11 +21,10 @@ function App() {
     _setColor(col)
   }
 
-
   const colorInputChangeHandler = (e) => {
     var s = new Option().style;
     s.color = e.target.value;
-    if(s.color == e.target.value){
+    if(s.color === e.target.value){
       setColorInputError(null)
     }else{
       setColorInputError('errorBorder')
@@ -96,14 +83,7 @@ function App() {
   useEffect(() => {
     const colorsBtns = [];
     colors.forEach((color, index) => {
-      colorsBtns.push(
-        <div
-          key={`colors${index}_${color}`}
-          onClick={changeMainColorHandler}
-          className="color"
-          style={{ backgroundColor: color }}
-        ></div>
-      );
+      colorsBtns.push(<div  key={`colors${index}_${color}`} onClick={changeMainColorHandler} className="color"  style={{ backgroundColor: color }}  ></div>);
     });
 
     setColorsButtons(colorsBtns);
@@ -114,13 +94,7 @@ function App() {
     const newGrid = [];
 
     for (let i = 0; i < gridLayout * gridLayout; i++) {
-      rows.push(
-        <div
-          onClick={changeCellColorHandler}
-          key={`cell${i + 1}_${Math.random()}`}
-          className="cell"
-        ></div>
-      );
+      rows.push(<div  onClick={changeCellColorHandler}  key={`cell${i + 1}_${Math.random()}`} className="cell" ></div>);
       if ((i + 1) % gridLayout === 0) {
         newGrid.push(rows);
         rows = [];
@@ -135,66 +109,31 @@ function App() {
       <div className="content">
         <h1>Pixel Art</h1>
         <div className="controls">
-          <button className="btn" onClick={setGridLayout.bind(null, 8)}>
-            8x8
-          </button>
-          <button className="btn" onClick={setGridLayout.bind(null, 12)}>
-            12x12
-          </button>
-          <button className="btn" onClick={setGridLayout.bind(null, 16)}>
-            16x16
-          </button>
-          <button className="btn" onClick={setGridLayout.bind(null, 32)}>
-            32x32
-          </button>
+          <button className="btn" onClick={setGridLayout.bind(null, 8)}>8x8</button>
+          <button className="btn" onClick={setGridLayout.bind(null, 12)}>12x12</button>
+          <button className="btn" onClick={setGridLayout.bind(null, 16)}>16x16</button>
+          <button className="btn" onClick={setGridLayout.bind(null, 32)}>32x32</button>
         </div>
         <div className="controls">{colorsButtons}</div>
         <div className="controls">
           <form onSubmit={customColorHandler} className="custom custom--color">
-            <label htmlFor="color">
-              Custom color:
-              <input
-              className={colorInputError}
-                value={colorInput}
-                onChange={colorInputChangeHandler}
-                type="text"
-                id="color"
-                placeholder="pink"
-              />
+            <label htmlFor="color">Custom color:
+              <input className={colorInputError} value={colorInput} onChange={colorInputChangeHandler} type="text"  id="color"  placeholder="pink"  />
             </label>
-            <button type="submit" className="btn btn--set">
-              Set
-            </button>
-          </form>
+            <button type="submit" className="btn btn--set">Set</button>
+            </form>
           <div className="currentColor" style={{backgroundColor:color}}></div>
           <form onSubmit={customGridHandler} className="custom custom--grid">
-            <label htmlFor="grid">
-              Custom grid:
-              <input
-              className={gridInputError}
-                value={gridInput}
-                onChange={gridInputChangeHandler}
-                placeholder="3 to infinity"
-                type="number"
-                min="3"
-                id="grid"
-              />
+            <label htmlFor="grid">Custom grid:
+              <input  className={gridInputError}  value={gridInput} onChange={gridInputChangeHandler}  placeholder="3 to infinity" type="number"  min="3" id="grid"  />
             </label>
-            <button type="submit" className="btn btn--set">
-              Set
-            </button>
-          </form>
+            <button type="submit" className="btn btn--set">Set</button>
+            </form>
         </div>
         <div ref={gridRef} className="pixelsgrid">
-          {grid.map((row, index) => (
-            <div key={`row${index + 1}`} className="row">
-              {row}
-            </div>
-          ))}
+          {grid.map((row, index) => (<div key={`row${index + 1}`} className="row">{row}</div>))}
         </div>
-        <button onClick={downloadArtHandler} className="btn btn--download">
-          Download you art
-        </button>
+        <button onClick={downloadArtHandler} className="btn btn--download">Download your art</button>
       </div>
     </div>
   );
