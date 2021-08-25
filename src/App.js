@@ -24,7 +24,7 @@ function App() {
   const colorInputChangeHandler = (e) => {
     var s = new Option().style;
     s.color = e.target.value;
-    if(s.color === e.target.value){
+    if(s.color === e.target.value || /^#[0-9A-F]{6}$/i.test(e.target.value)){
       setColorInputError(null)
     }else{
       setColorInputError('errorBorder')
@@ -118,7 +118,7 @@ function App() {
         <div className="controls">
           <form onSubmit={customColorHandler} className="custom custom--color">
             <label htmlFor="color">Custom color:
-              <input className={colorInputError} value={colorInput} onChange={colorInputChangeHandler} type="text"  id="color"  placeholder="pink"  />
+              <input className={colorInputError} value={colorInput} onChange={colorInputChangeHandler} type="text"  id="color"  placeholder="magenta or #FF00FF"  />
             </label>
             <button type="submit" className="btn btn--set">Set</button>
             </form>
